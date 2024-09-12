@@ -32,6 +32,6 @@
     - Allow user to move pieces on a clickable GUI
 - **Design Specification**
     - Java-designed game with multiple classes working together to complete functionality.
-- **![Gannt Chart](../deliverables/Gannt.png)** <br>
+- **Gannt Chart** <br>
 ![Gannt](Gannt.png)
 
