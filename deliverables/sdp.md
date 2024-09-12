@@ -16,11 +16,9 @@
     - *Project Management*
         - Excel (Gannt chart), word doc and markdown on GitHub
             - Organize thoughts, schedule timings and work progress.
-- **SDLC Details***
+- **SDLC Details**
     - *Scrum*
         - When using scrum, we are actively assigning tasks to one another. Setting deadlines, progress and completion dates.
-- **Timeline** (Dates for)
-    - *MVSs* (Minimal viable specification)
 
 ### Timeline
 - **MVSs** (Minimal viable specification)
