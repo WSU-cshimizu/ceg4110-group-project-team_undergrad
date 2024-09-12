@@ -2,7 +2,7 @@
 
 ### Communication Plan
 * **Administrative**
-    - *Meeting Locations*
+    - *Meeting Locations* (Decided Weekly)
         - Library
         - Computer Lab in Russ
         - Student Union
