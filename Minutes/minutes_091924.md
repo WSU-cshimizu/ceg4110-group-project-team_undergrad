@@ -30,5 +30,5 @@
 
 ## Signatures
 * ...
-* ...
+* Muhammad Syed
 * Vichaka Houi
