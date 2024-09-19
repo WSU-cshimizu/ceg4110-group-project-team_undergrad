@@ -2,6 +2,8 @@
 
 * `deliverables/` -- Contains classwork needed for submissions and any other class assignments.
 
+* `minutes/` -- Contains meeting minutes over the course.
+
 ## Education
 
 Vichaka Houi
