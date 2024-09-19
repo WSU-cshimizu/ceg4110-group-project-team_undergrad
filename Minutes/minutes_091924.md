@@ -29,6 +29,7 @@
   * Begin work on game mechanic functionality.
 
 ## Signatures
-* ...
+* Logan Scarberry
 * Muhammad Syed
 * Vichaka Houi
+* Michael wasn't able to attend due to a medical absence.
