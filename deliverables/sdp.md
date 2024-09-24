@@ -12,7 +12,8 @@
         - Every Thursday 12:20~1:20pm 
     - *Communicating Plan* (Meeting Structure & Cadence)
         - Spend time opening a progress report on one’s current work.
-            - In-person and for virtual meetings.
+            - In-person and for virtual meetings. 
+            - Justification for communication plan - We decided to meet both in-person and have virtual meeting to make it easier if one of the team members miss a meeting.
     - *Project Management*
         - Excel (Gannt chart), word doc and markdown on GitHub
             - Organize thoughts, schedule timings and work progress.
