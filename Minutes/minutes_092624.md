@@ -32,5 +32,5 @@
 ## Signatures
 * Logan Scarberry
 * Muhammad Syed
-* ...
+* Vichaka Houi
 * ...
