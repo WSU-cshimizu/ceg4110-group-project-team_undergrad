@@ -9,7 +9,9 @@
         - Russ Lobby
         - Virtual (Discord)
     - *Meeting Times*
-        - Every Thursday 12:20~1:20pm 
+        - Every Thursday 12:20~1:20pm
+    - *Meeting Layout Reasoning*
+        - We had chosen the first four locations as potential quick and easy to get together meetup locations. These locations were easy and accessible right after our classes. In the event that some or all of our members are unavailable, Discord will be available. Thursday after class was chosen because all of us are available at that time. 
     - *Communicating Plan* (Meeting Structure & Cadence)
         - Spend time opening a progress report on one’s current work.
             - In-person and for virtual meetings. 
@@ -39,17 +41,17 @@
     - Moveable/Functional Game Pieces
 - **Milestones** (Check-Ins)
     - End of the Week (Thursday 12:20~1:20pm)
-    - 10/03: Board/GUI deadline was set because as a main top level component, its existence helps us test and continue production for the backend of the checkers game mechanics.
-    - 10/03: Database planning deadline was set to this date in order to have a structured plan for a database once the basis of the software has been developed.
-    - 10/17: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
-    - 10/17: The game functionality was set to this deadline because the whole of the functionality is needed to for the game board which is gonna come later on, and also seeing all the milestones i can see that before the functionality the board/GUI, database and the ai/bot should be completed.  
-    - 10/23: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
-    - 10/31 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
-    - 11/02: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
+    - 10/18: Board/GUI deadline was set because as a main top level component, its existence helps us test and continue production for the backend of the checkers game mechanics.
+    - 10/18: Database planning deadline was set to this date in order to have a structured plan for a database once the basis of the software has been developed.
+    - 11/01: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
+    - 10/24: The game functionality was set to this deadline because the whole of the functionality is needed to for the game board which is gonna come later on, and also seeing all the milestones i can see that before the functionality the board/GUI, database and the ai/bot should be completed.  
+    - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
+    - 11/07 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
+    - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
 - **Requirement Specification**
-    - Allow user to move pieces on a clickable GUI
+    - Check-in: 10/03/24
 - **Design Specification**
-    - Java-designed game with multiple classes working together to complete functionality.
+    - Check-in: 10/03/24
 - **Gannt Chart** <br>
 ![Gannt](Gannt.png)
 
