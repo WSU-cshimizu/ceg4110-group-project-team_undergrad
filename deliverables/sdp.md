@@ -26,6 +26,8 @@
         - Database Planning: Two weeks were given for database planning in order to begin structuring the database while the software begins development.
         - Database: Three weeks were given for the implementation of the database in order to give ample time for the database to be modified as software features are gradually implemented
         - Settings: One week was given for the implementation of the settings feature as it will be one of the final steps in development and simply consists of compiling together existing features.
+        - Functionality :  2 Weeks was given for the functionality for the game because we would need to be doing a lot of testing and making a lot of changes to the game functionality in order to have the game work flawlessly, also we are adding more to the checkers regular game rules.
+        - Board : For the board two weeks are given because to actually test out the board the rest of the game functionality and all the other components, need to work before we could fully test the board. Also some extra time has been given to test before releasing the final product. 
 
 - **SDLC Details**
     - *Scrum*
