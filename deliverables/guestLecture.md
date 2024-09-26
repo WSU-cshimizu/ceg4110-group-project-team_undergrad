@@ -24,6 +24,9 @@
     - How do dayton freight test out new equipment and how do they decide which equipment is the best for their operations?
     - Response: As a such a large company they only pick companies who have been in buisness for a while and not go out of buisness or get sold to someone, as for their equipment they test out all the different products before hand and chose the one that fits their operations the best.
 
+* Question 5
+    - How does DFL handle software testing and who is responsible for the creation and execution of test plans?
+
 ## Lessons Learned
 
 Priority of things. Understanding the difference in different priorities and benefits from certain things. An example from the guest speaker is prioritizing color of a thing vs priorities on another buisness deal. And how that in the buisness industry there are all kinds of things people may put priorities on.
