@@ -15,10 +15,10 @@
     - From someone else: How do you prioritize UI designs?
     - Response: Primairly based on who you speak to. Stakeholders, customers and company have an impact.
 
-
 * Question 3
     - How are projects especially large ones organized?
     - Stuff like do you guys just have a select few or gather the team to thoroughly plan the layout? Who organize the tasks that should be handled?
+    - Response: Normally the programmers and other IT are the buisness lead themselves. Work is mainly assigned on a dashboard by their team that they are in. They just pick up whats first in order and have it reported to the team. They do all the time work together and not just an individual. Mainly to catch up on work, discuss things and others.
 
 * Question 4 
     - How do dayton freight test out new equipment and how do they decide which equipment is the best for their operations?
