@@ -1,5 +1,5 @@
 # Guest Lecture Response
-* **Guest Lecturer:** `Niclas Rue and Tim Shrinak`
+* **Guest Lecturer:** `Niclas Rue and Tim Skrinak`
 * **Company:** `Dayton Freight Lines`
 * **Date:** `9/26/2024`
 
@@ -9,7 +9,6 @@
 * Question 1
     - From someone else: How does the fine work for when a truck renter does not return? Like the fine for the truck is less than the profit they are by not complying?
     - Answer from speaker: An example of this is with Amazon. They cut ties with Amazon in terms of buisness.
-
 
 * Question 2
     - From someone else: How do you prioritize UI designs?
@@ -26,6 +25,10 @@
 
 * Question 5
     - How does DFL handle software testing and who is responsible for the creation and execution of test plans?
+
+* Question 6
+    - How do you integrade your software with other neighboring freight companies that you also work with? Do you share API's or use some other form to share data with each other?
+    - Response: They do share API's with other companies and a lot of companies share data in familiar format that allow them to integrate and automatically use the data effectively.
 
 ## Lessons Learned
 
