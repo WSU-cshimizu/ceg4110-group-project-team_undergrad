@@ -20,6 +20,9 @@
     - How are projects especially large ones organized?
     - Stuff like do you guys just have a select few or gather the team to thoroughly plan the layout? Who organize the tasks that should be handled?
 
+* Question 4 
+    - How do dayton freight test out new equipment and how do they decide which equipment is the best for their operations?
+    - Response: As a such a large company they only pick companies who have been in buisness for a while and not go out of buisness or get sold to someone, as for their equipment they test out all the different products before hand and chose the one that fits their operations the best.
 
 ## Lessons Learned
 
