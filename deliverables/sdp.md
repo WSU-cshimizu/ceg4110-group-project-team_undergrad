@@ -41,6 +41,11 @@
     - Moveable/Functional Game Pieces
 - **Milestones** (Check-Ins)
     - End of the Week (Thursday 12:20~1:20pm)
+    - 10/3: Deadline for requirement specification.
+    - 10/3: Deadline for design specification.
+    - 10/18: Deadline for GUI design.
+    - 10/26: Deadline for menu selection design.
+    - 11/3: Deadline for bot difficulty design selection.
     - 10/18: Board/GUI deadline was set because as a main top level component, its existence helps us test and continue production for the backend of the checkers game mechanics.
     - 10/18: Database planning deadline was set to this date in order to have a structured plan for a database once the basis of the software has been developed.
     - 11/01: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
