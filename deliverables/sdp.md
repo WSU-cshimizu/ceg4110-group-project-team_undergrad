@@ -41,15 +41,15 @@
     - Moveable/Functional Game Pieces
 - **Milestones** (Check-Ins)
     - End of the Week (Thursday 12:20~1:20pm)
-    - 10/3: Deadline for requirement specification.
-    - 10/3: Deadline for design specification.
-    - 10/18: Deadline for GUI design.
-    - 10/26: Deadline for menu selection design.
-    - 11/3: Deadline for bot difficulty design selection.
+    - 10/3: Deadline for requirement specification. Will allow us to begin making solutions.
+    - 10/3: Deadline for design specification. The list of designs we make will better help guide our path.
+    - 10/18: Deadline for GUI design. Will give us access to the front end and page of the program. We can begin adding different features to it.
     - 10/18: Board/GUI deadline was set because as a main top level component, its existence helps us test and continue production for the backend of the checkers game mechanics.
     - 10/18: Database planning deadline was set to this date in order to have a structured plan for a database once the basis of the software has been developed.
+    - 10/24: The game functionality was set to this deadline because the whole of the functionality is needed to for the game board which is gonna come later on, and also seeing all the milestones i can see that before the functionality the board/GUI, database and the ai/bot should be completed.
+    - 10/26: Deadline for menu selection design. We can now attempt to connect certain programs and features we had planned and test.
     - 11/01: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
-    - 10/24: The game functionality was set to this deadline because the whole of the functionality is needed to for the game board which is gonna come later on, and also seeing all the milestones i can see that before the functionality the board/GUI, database and the ai/bot should be completed.  
+    - 11/3: Deadline for bot difficulty design selection. Gives the ability to test different selections of bot.
     - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
     - 11/07 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
