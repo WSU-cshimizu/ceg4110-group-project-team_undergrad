@@ -14,7 +14,7 @@
 ## Notes
 * Logan and Vichaka discussed concerns related to using JavaFX versus JavaSwing based on the comments made by Cogan on Tuesday.
 * Michael discussed his layout and planning for designing the database as we worked together on the mvs.
-* Vichaka adjusted the gannt chart to accurately show the due date for the mvs.
+* Vichaka adjusted the gannt chart to accurately show the due date for the mvs. <br>
 **DataFlow**
 ![DataFlow](dataflow.png) <br>
 **SwimLane**
