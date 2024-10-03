@@ -58,4 +58,4 @@
 - **Design Specification**
     - Check-in: 10/03/24
 - **Gannt Chart** <br>
-![alt text](image-1.png)
+![alt text](image-2.png)
