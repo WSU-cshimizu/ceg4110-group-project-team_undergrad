@@ -53,9 +53,54 @@
     - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
     - 11/07 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
-- **Requirement Specification**
+### **Requirement Specification**
     - Check-in: 10/03/24
-- **Design Specification**
+1. *Interface*
+    * System shall present an interactive menu that consists of several different buttonsv(bot difficulty, start, statistics, and game settings).
+    * System shall have a login pop-up.
+2. *Account System*
+    * The system shall allow the user to sign in using login credentials.
+    * The system shall allow the user to save game progress to user login.
+    * The system shall savea  logged in user settings to their account.
+    * The system shall load saved settings whena  user logs in.
+    * Pressing the leave button shall save the game's progress.
+3. *Game Mechanics*
+    * Movement of the checkers pieces for both human players and the bot.
+    * Build the checkers board.
+    * Pieces should go forward and backwards.
+4. *Database*
+    * The system shall utilize a database to store game and user data.
+    * The system's database shall store previous moves and board state.
+    * The system's database shall store user login credentials.
+    * The system's database shall store user settings.
+5. *Checkerboard UI*
+    * The user shall be able to select a piece on the board and the board will highlight to show available moves.
+    * The checkerboard shall consist of 64 squares in an 8x8 layout, alternating dark and light color.
+6. *AI*
+    * The AI shall read the user input and respond witha  move based on the user's as well as the selected difficulty.
+### **Design Specification**
     - Check-in: 10/03/24
+1. *Interface*
+    * The Java GUI will be designed using JavaFX/
+    * Separate clickable buttons for bot difficulty, starting the game, player stats, settings, and an exit will be created.
+    * A leave button shall save the progress of the player in the database.
+2. *Account System*
+    * There shall be username and password fields.
+    * There shall be a login button.
+    * There shall be an output if wrong username and password is entered.
+3. *Game Mechanics*
+    * 2 different classes, one for the human player and one for the bot.
+    * Using a 2D array, design the board using the existent checkers board design.
+    * Change the game physics from just pieces moving forward, have them move backwards as well.
+4. *Database*
+    * Utilize a SQLite database with interfacing to Java to implement the database.
+    * One table of the database will contain a log of performed moves and another table containing the current board state.
+    * One table of the database will contain user IDs and login credentials.
+    * One table of the database will contain default settings and related custom settins to user IDs.
+5. *Checkerboard UI*
+    * JavaFX may be used as a framework to design the checkerboard GUI.
+    * THe inputs made to the checkerboard by the user will be sent to the backend to determine the available moves and that information will be displayed to the GUI in the form of highlighted tiles.
+6. *AI*
+    * The AI will read from the database to determine the most recent move made and run a method based on the move as well as the difficulty selected by the user to determine the AI's move.
 - **Gannt Chart** <br>
 ![alt text](image-2.png)
