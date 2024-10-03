@@ -53,6 +53,7 @@
     - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
     - 11/07 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
+    - 11/17: Final Design and Requirement specification due date was set to this date as it should mark the end of most development   and thus the final draft of these specifications should be completed.
 ### **Requirement Specification**
     - MVS Check-in: 10/03/24
     - Final Check-in: 11/17/24
