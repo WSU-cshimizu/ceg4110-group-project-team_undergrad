@@ -105,4 +105,4 @@
 6. *AI*
     * The AI will read from the database to determine the most recent move made and run a method based on the move as well as the difficulty selected by the user to determine the AI's move.
 - **Gannt Chart** <br>
-![alt text](image-2.png)
+![alt text](image-3.png)
