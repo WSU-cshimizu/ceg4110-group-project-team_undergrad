@@ -1,4 +1,4 @@
-# Meeting Minutes (09/26/2024)
+# Meeting Minutes (10/03/2024)
 
 ## Administrivia
 * Time: 12:20pm
