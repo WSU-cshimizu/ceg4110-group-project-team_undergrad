@@ -37,8 +37,8 @@
 
 ### Timeline
 - **MVSs** (Minimal viable specification)
-    - Game Board GUI
-    - Moveable/Functional Game Pieces
+    - Requirement Specficiation MVS Check-in: 10/03/2024
+    - Design Specification MVS Check-in: 10/03/2024
 - **Milestones** (Check-Ins)
     - End of the Week (Thursday 12:20~1:20pm)
     - 10/3: Deadline for requirement specification. Will allow us to begin making solutions.
@@ -54,7 +54,8 @@
     - 11/07 : The board is set for this deadline because its the most simple task, and is not needed until the very end. 
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
 ### **Requirement Specification**
-    - Check-in: 10/03/24
+    - MVS Check-in: 10/03/24
+    - Final Check-in: 11/17/24
 1. *Interface*
     * System shall present an interactive menu that consists of several different buttonsv(bot difficulty, start, statistics, and game settings).
     * System shall have a login pop-up.
@@ -79,7 +80,8 @@
 6. *AI*
     * The AI shall read the user input and respond witha  move based on the user's as well as the selected difficulty.
 ### **Design Specification**
-    - Check-in: 10/03/24
+    - MVS Check-in: 10/03/24
+    - Final Check-in: 11/17/24
 1. *Interface*
     * The Java GUI will be designed using JavaFX/
     * Separate clickable buttons for bot difficulty, starting the game, player stats, settings, and an exit will be created.
