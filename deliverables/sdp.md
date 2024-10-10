@@ -56,8 +56,6 @@
     - 11/17: Final Design and Requirement specification due date was set to this date as it should mark the end of most development   and thus the final draft of these specifications should be completed.
     - 11/21: Integration, this section is for combining current pieces of code to be able to run from each other. Its been given 25 days because other code are still being worked on while in attempt to complete previous work that is ready to merge.
 ### **Requirement Specification**
-    - MVS Check-in: 10/03/24
-    - Final Check-in: 11/17/24
 1. *Interface*
     * System shall present an interactive menu that consists of several different buttonsv(bot difficulty, start, statistics, and game settings).
     * System shall have a login pop-up.
