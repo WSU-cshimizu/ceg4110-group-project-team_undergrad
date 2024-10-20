@@ -12,8 +12,5 @@ Vichaka Houi
 Logan Scarberry
 * Major: Computer Science Senior undergrad
 
-Muhammad Syed
-* Major: Computer Science Senior undergrad
-
 Michael Mowad 
 * Major: Computer Science Senior undergrad
