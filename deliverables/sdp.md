@@ -49,9 +49,9 @@
     - 10/24: The game functionality was set to this deadline because the whole of the functionality is needed to for the game board which is gonna come later on, and also seeing all the milestones i can see that before the functionality the board/GUI, database and the ai/bot should be completed.
     - 10/25: Board/GUI deadline was set because as a main top level component, its existence helps us test and continue production for the backend of the checkers game mechanics.
     - 10/26: Deadline for menu selection design. We can now attempt to connect certain programs and features we had planned and test.
-    - 11/01: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
     - 11/3: Deadline for bot difficulty design selection. Gives the ability to test different selections of bot.
     - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
+    - 11/09: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
     - 11/17: Final Design and Requirement specification due date was set to this date as it should mark the end of most development   and thus the final draft of these specifications should be completed.
     - 11/21: Integration, this section is for combining current pieces of code to be able to run from each other. Its been given 25 days because other code are still being worked on while in attempt to complete previous work that is ready to merge.
