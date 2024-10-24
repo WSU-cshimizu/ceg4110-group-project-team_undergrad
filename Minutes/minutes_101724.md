@@ -1,7 +1,7 @@
 # Meeting Minutes (10/17/2024)
 
 ## Administrivia
-* Time: 11:20pm <br> (began early because Cogan was absent for class so we had a group work day)
+* Time: 11:20am <br> (began early because Cogan was absent for class so we had a group work day)
 * Location: Fawcett Hall 204
 * Scribe: Logan Scarberry
 
