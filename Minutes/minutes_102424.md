@@ -42,5 +42,5 @@
 
 ## Signatures
 * Vichaka Houi
-*
+* Logan Scarberry
 *
