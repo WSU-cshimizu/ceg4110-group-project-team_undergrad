@@ -51,6 +51,7 @@
     - 10/26: Deadline for menu selection design. We can now attempt to connect certain programs and features we had planned and test.
     - 11/3: Deadline for bot difficulty design selection. Gives the ability to test different selections of bot.
     - 11/07: Database implementation deadline was set to this date as by then most of the primary features of the software have been developed and the database linked to these features.
+    - 11/07: Functionality integration with the board was set to this date as it is after the core functionality and board gui have been designed
     - 11/09: AI/Bot deadline was set for this date as it's components function off of the game mechanics and require the game mechanic backend to function properly.
     - 11/17: Settings deadline was set to this date as it relies on almost all of the software features to have been implemented.
     - 11/17: Final Design and Requirement specification due date was set to this date as it should mark the end of most development   and thus the final draft of these specifications should be completed.
