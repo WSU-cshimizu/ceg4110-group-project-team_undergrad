@@ -27,7 +27,7 @@
 * The start game then can make several decisions after the main menu stage. It is able to choose to check/update the board and or exit the application. If it choose to check/update the board, it can make a move or check status. If it makes a move, it loops back to check/update the board. Otherwise, from the check/update position, it can check status. With check status, it can choose to exit application or if the game was not won yet, it goes back to check/update board.
 * Can also exit application at the menu.
 
-`![InteractiveUML](InteractionOverviewUMLDiagram.png) <br>`
+![InteractiveUML](InteractionOverviewUMLDiagram.png) <br>
 
 ## Action Items
 * Vichaka
