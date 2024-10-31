@@ -1,14 +1,23 @@
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class botDifficulty {
+
+    // CHECKME
+    private static String difficulty;
 
     public static void showBotDifficulty(Stage stage) {
         // Root pane for the bot difficulty scene
@@ -34,10 +43,22 @@ public class botDifficulty {
         setButtonSize(Medium);
         setButtonSize(Hard);
 
-        // Action for difficulty buttons to update the selected difficulty label
-        Easy.setOnAction(event -> selectedDifficultyLabel.setText("Selected Difficulty: Easy"));
-        Medium.setOnAction(event -> selectedDifficultyLabel.setText("Selected Difficulty: Medium"));
-        Hard.setOnAction(event -> selectedDifficultyLabel.setText("Selected Difficulty: Hard"));
+        // Action for difficulty buttons to update the selected difficulty label.
+        Easy.setOnAction((ActionEvent e) -> {
+            selectedDifficultyLabel.setText("Selected Difficulty: Easy");
+            difficulty = "Easy"; // Store current difficulty selected
+            System.out.println(difficulty);
+        });
+        Medium.setOnAction((ActionEvent e) -> {
+            selectedDifficultyLabel.setText("Selected Difficulty: Medium");
+            difficulty = "Medium"; // Store current difficulty selected
+            System.out.println(difficulty);
+        });
+        Hard.setOnAction((ActionEvent e) -> {
+            selectedDifficultyLabel.setText("Selected Difficulty: Hard");
+            difficulty = "Hard"; // Store current difficulty selected
+            System.out.println(difficulty);
+        });
 
         // Add label, buttons, and selected difficulty label to the VBox
         vBox.getChildren().addAll(settingsLabel, Easy, Medium, Hard, selectedDifficultyLabel);
@@ -57,6 +78,9 @@ public class botDifficulty {
         bottomRightPane.setPadding(new Insets(0, 20, 20, 0)); // Add padding (top, right, bottom, left)
         rootPane.setBottom(bottomRightPane);
 
+        setBackgroundColor(rootPane, Color.LIGHTBLUE); // You can change the color here
+
+
         // Set up the scene
         Scene settingScene = new Scene(rootPane, 1000, 800);
         stage.setScene(settingScene);
@@ -67,5 +91,9 @@ public class botDifficulty {
     private static void setButtonSize(Button button) {
         button.setPrefWidth(200); // Width of the button
         button.setPrefHeight(50); // Height of the button
+    }
+
+    private static void setBackgroundColor(BorderPane pane, Paint color) {
+        pane.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, null)));
     }
 }
