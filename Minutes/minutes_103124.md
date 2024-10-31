@@ -15,6 +15,7 @@
 * The group discussed possibilities of implementing pieces into the board using JavaFX and x/y coordinates.
 * Bot difficulty selection was completed.
 * Game board has been integrated by Vichaka with the start menu.
+* On the topic of Settings, we believe that we can add special sound effects and possibly background changes.
 
 ## Action Items
 * Vichaka
