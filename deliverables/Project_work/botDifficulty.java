@@ -96,4 +96,9 @@ public class botDifficulty {
     private static void setBackgroundColor(BorderPane pane, Paint color) {
         pane.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, null)));
     }
+
+    // Getter method for difficulty
+    public String getDifficulty() {
+        return difficulty;
+    }
 }
