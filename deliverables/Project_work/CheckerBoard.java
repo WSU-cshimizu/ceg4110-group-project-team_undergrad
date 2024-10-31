@@ -6,6 +6,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
+// UPDATED VERSION OF `CheckersBoardGUI.java` 
+
 public class CheckerBoard {
     
     private static final int TILE_SIZE = 100;
