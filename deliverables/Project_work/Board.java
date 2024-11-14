@@ -34,6 +34,10 @@ public class Board {
         return board[x][y];
     }
 
+    public int getSize() {
+        return 8; // Since the board size is 8x8
+    }
+
     // Set piece given coords and piece object
     public void setPiece(int x, int y, Piece p) {
         board[x][y] = p;
