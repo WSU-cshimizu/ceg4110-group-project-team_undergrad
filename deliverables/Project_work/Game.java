@@ -3,12 +3,14 @@ public class Game {
     private int playerScore;
     private int botScore;
     private Board board;
+    private BotPlayer botPlayer; // Add this to create an instance of the bot player
 
     // Default constructor
     public Game() {
         board = new Board();
         playerScore = 0;
         botScore = 0;
+        botPlayer = new BotPlayer(this); // Initialize the bot player
     }
 
     // Game constructor that loads saved score and board state
@@ -17,6 +19,17 @@ public class Game {
         this.playerScore = playerScore;
         this.botScore = botScore;
     }
+
+        // Add a getter method to access the BotPlayer
+        public BotPlayer getBotPlayer() {
+            return botPlayer;
+        }
+
+        // Add the missing getBoard method
+        public Board getBoard() {
+            return board;
+        }
+        
 
     // movePiece
     // Params: piece to move, target x coord, target y coord
@@ -145,6 +158,16 @@ public class Game {
     public void printScore() {
         System.out.println("Player Score: " + playerScore);
         System.out.println("Bot Score: " + botScore);
+    }
+
+    public void undoMove(int startX, int startY, int endX, int endY) {
+        Piece movedPiece = board.getPiece(endX, endY);
+        board.setPiece(startX, startY, movedPiece);
+        board.setPiece(endX, endY, null);
+        if (movedPiece != null) {
+            movedPiece.setX(startX);
+            movedPiece.setY(startY);
+        }
     }
 
     public void saveGame() {
