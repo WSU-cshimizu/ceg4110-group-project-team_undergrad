@@ -82,6 +82,8 @@ public class FirstEx extends Application {
         Button test8 = new Button("test8");
         Button test9 = new Button("test9");
 
+        // test1-9 are invisible buttons to fill up and create
+        // a perfect center of buttons and 1 logout on the bottom right
         test1.setVisible(false);
         test2.setVisible(false);
         test3.setVisible(false);
@@ -99,6 +101,8 @@ public class FirstEx extends Application {
         setButtonSize(btnSeeStats);
         setButtonSize(btnExit);
         setButtonSize(btnLogout);
+    
+        // Set button size for fuller locations
         setButtonSize(test1);
         setButtonSize(test2);
         setButtonSize(test3);
@@ -113,7 +117,6 @@ public class FirstEx extends Application {
         // Exit action for buttons (temporary, for testing)
         // btnStartGame.setOnAction((ActionEvent event) -> Platform.exit());
         btnStartGame.setOnAction((ActionEvent event) -> {
-            // TODO: Make further implementation
             // CheckersBoardGUI.StartUI(stage);
             CheckersBoardGUI test = new CheckersBoardGUI(); //
             test.start(stage);
@@ -123,7 +126,7 @@ public class FirstEx extends Application {
         });
         btnSettings.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
-            showSettingsScences(stage); // Call method to switch scenes
+            Settings.showSettings(stage); // Call method to switch scenes
         });
         btnSeeStats.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
@@ -137,7 +140,8 @@ public class FirstEx extends Application {
             test.start(stage);
         });
 
-
+        
+        gridPane.add(test1, 4, 5);
         gridPane.add(test2, 1, 0);
         gridPane.add(test3, 2, 1);
         gridPane.add(test4, 3, 2);
@@ -150,7 +154,6 @@ public class FirstEx extends Application {
         gridPane.add(btnSettings, 3, 5);
         gridPane.add(btnSeeStats, 3, 6);
         gridPane.add(btnExit, 3, 7);
-        gridPane.add(test1, 4, 5);
         gridPane.add(btnLogout, 5, 13);
 
     //     // Adding buttons to VBox
