@@ -129,7 +129,8 @@ public class CheckersBoardGUI extends Application {
         int currentY = selectedPiece.getY();
 
         // Attempt to move the selected piece using the game logic
-        if (game.movePiece(currentX, currentY, targetX, targetY)) {
+        if (game.movePiece(currentX, currentY, targetX, targetY, true)) {
+            System.out.println("TEST PIECE");
             // Update the GUI after a successful player move
             drawPieces();
             selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white after moving
@@ -140,7 +141,7 @@ public class CheckersBoardGUI extends Application {
             if (!playerIsBot) {
                 BotPlayer.Move botMove = game.getBotPlayer().determineMove();
                 if (botMove != null) {
-                    game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY());
+                    game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
                     drawPieces(); // Update GUI after bot move
                     System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
                 }
