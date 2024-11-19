@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -25,26 +26,26 @@ public class Settings {
         VBox vBox = new VBox(20); // 20 is the spacing between elements
         vBox.setAlignment(Pos.CENTER);
 
-        // Main label for the difficulty selection screen
-        Label settingsLabel = new Label("Select Bot Difficulty:");
 
         // Difficulty buttons
-        Button Easy = new Button("Easy");
-        Button Medium = new Button("Medium");
-        Button Hard = new Button("Hard");
+        Button Easy = new Button("Sound");
+        Slider slider = new Slider(0, 1, 0.5);
+        slider.setShowTickMarks(true);
+        slider.setShowTickLabels(true);
+        slider.setMajorTickUnit(0.1f);
+        slider.setBlockIncrement(0.1f);
 
         // Label to display the selected difficulty
         Label selectedDifficultyLabel = new Label(); // This will show the selected difficulty
 
         // Set button sizes
         setButtonSize(Easy);
-        setButtonSize(Medium);
-        setButtonSize(Hard);
 
+        
 
 
         // Add label, buttons, and selected difficulty label to the VBox
-        vBox.getChildren().addAll(settingsLabel, Easy, Medium, Hard, selectedDifficultyLabel);
+        vBox.getChildren().addAll(Easy, selectedDifficultyLabel, slider);
 
         // Place the VBox in the center of the BorderPane
         rootPane.setCenter(vBox);
