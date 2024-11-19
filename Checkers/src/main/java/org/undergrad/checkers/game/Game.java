@@ -38,7 +38,7 @@ public class Game {
     // movePiece
     // Params: piece to move, target x coord, target y coord
     // Returns: true if move successful, false if move unsuccessful.
-    public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
+    public boolean movePiece(int currentX, int currentY, int targetX, int targetY, boolean jumpEnable) {
 
         // Check that current spot is actually a piece
         if (board.getPiece(currentX, currentY) == null) {
@@ -55,10 +55,11 @@ public class Game {
         // Calculate target vs current coordinate offset
         int xOffset = piece.getX() - targetX;
         int yOffset = piece.getY() - targetY;
+        System.out.println(xOffset + " " + yOffset);
 
         // Check if attempting to jump a piece based on absolute value of offsets
         if (Math.abs(xOffset) + Math.abs(yOffset) == 4) {
-
+            System.out.println(Math.abs(xOffset) + " " + Math.abs(yOffset));
             // Calculated by adding subtracting/adding 1 based on the offset sign
             // Calculate coordinates of piece being jumped
             int jumpX = targetX + Integer.signum(xOffset);
@@ -67,18 +68,21 @@ public class Game {
             // Check that piece both exists, and is not on the same team as moving piece
             if (board.getPiece(jumpX, jumpY) != null && board.getPiece(jumpX, jumpY).getBotPiece() != piece.getBotPiece()) {
                 //Capture piece
-                capture(board.getPiece(jumpX, jumpY));
+                if (jumpEnable) {
+                    capture(board.getPiece(jumpX, jumpY));
+                }
 
                 // Set new piece/board values
                 board.setPiece(piece.getX(), piece.getY(), null);
                 piece.setX(targetX);
                 piece.setY(targetY);
                 board.setPiece(targetX, targetY, piece);
+                System.out.println("piece moved to " + piece.getX() + " " + piece.getY());
 
                 // Check if chain jump possible
-                if (chainJump(targetX, targetY, piece.getBotPiece())) {
+                //if (chainJump(targetX, targetY, piece.getBotPiece())) {
                     // TODO: insert handling
-                };
+                //};
 
                 // Return true
                 return true;

@@ -62,7 +62,7 @@ public class BotPlayer {
             int targetY = currentY + direction[1];
 
             if (isWithinBounds(targetX, targetY)) {
-                if (game.movePiece(currentX, currentY, targetX, targetY)) {
+                if (game.movePiece(currentX, currentY, targetX, targetY, false)) {
                     validMoves.add(new Move(currentX, currentY, targetX, targetY));
                     game.undoMove(currentX, currentY, targetX, targetY); // Undo move to restore state
                 }
@@ -73,7 +73,7 @@ public class BotPlayer {
             int jumpY = currentY + 2 * direction[1];
 
             if (isWithinBounds(jumpX, jumpY)) {
-                if (game.movePiece(currentX, currentY, jumpX, jumpY)) {
+                if (game.movePiece(currentX, currentY, jumpX, jumpY, false)) {
                     validMoves.add(new Move(currentX, currentY, jumpX, jumpY));
                     game.undoMove(currentX, currentY, jumpX, jumpY); // Undo move to restore state
                 }
