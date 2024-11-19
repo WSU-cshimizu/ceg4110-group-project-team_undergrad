@@ -58,7 +58,7 @@ public class Game {
         System.out.println(xOffset + " " + yOffset);
 
         // Check if attempting to jump a piece based on absolute value of offsets
-        if (Math.abs(xOffset) + Math.abs(yOffset) == 4) {
+        if (Math.abs(xOffset) == 2 && Math.abs(yOffset) == 2) {
             System.out.println(Math.abs(xOffset) + " " + Math.abs(yOffset));
             // Calculated by adding subtracting/adding 1 based on the offset sign
             // Calculate coordinates of piece being jumped
@@ -79,16 +79,11 @@ public class Game {
                 board.setPiece(targetX, targetY, piece);
                 System.out.println("piece moved to " + piece.getX() + " " + piece.getY());
 
-                // Check if chain jump possible
-                //if (chainJump(targetX, targetY, piece.getBotPiece())) {
-                    // TODO: insert handling
-                //};
-
                 // Return true
                 return true;
             }
-
-        } else {
+        // Confirm trying to move to valid diagonal space
+        } else if (Math.abs(xOffset) == 1 && Math.abs(yOffset) == 1) {
             // Set new piece/board values
             board.setPiece(piece.getX(), piece.getY(), null);
             piece.setX(targetX);
@@ -96,6 +91,9 @@ public class Game {
             board.setPiece(targetX, targetY, piece);
 
             return true;
+        // Else return false
+        } else {
+            return false;
         }
         return false;
     }
@@ -113,32 +111,29 @@ public class Game {
     // chainJump
     // input: current x and y coordinates and if bot
     // returns true if chain jump is possible
-    public boolean chainJump(int x, int y, boolean bot) {
+    public boolean[] chainJump(int x, int y, boolean bot) {
+        boolean[] moves = new boolean [4];
+
         // Check four corners around piece for an enemy piece
         // If true, check if following tile is empty and return true if so
-        if ((board.getPiece(x + 1, y + 1) != null) &&
-                (board.getPiece(x + 1, y + 1).getBotPiece() != bot)) {
-            return (board.getPiece(x + 2, y + 2) == null);
+        if (x < 6 && y < 6) {
+            if ((board.getPiece(x + 1, y + 1) != null) && (board.getPiece(x + 1, y + 1).getBotPiece() != bot)) {
+                moves[0] = (board.getPiece(x + 2, y + 2) == null);
+            }
+        } if (x < 6 && y > 1) {
+            if ((board.getPiece(x + 1, y - 1) != null) && (board.getPiece(x + 1, y - 1).getBotPiece() != bot)) {
+                moves[1] = (board.getPiece(x + 2, y - 2) == null);
+            }
+        } if (x > 1 && y < 6) {
+            if ((board.getPiece(x - 1, y + 1) != null) && (board.getPiece(x - 1, y + 1).getBotPiece() != bot)) {
+                moves[2] = (board.getPiece(x - 2, y + 2) == null);
+            }
+        } if (x > 1 && y > 1) {
+            if ((board.getPiece(x - 1, y - 1) != null) && (board.getPiece(x - 1, y - 1).getBotPiece() != bot)) {
+                moves[3] = (board.getPiece(x - 2, y - 2) == null);
+            }
         }
-
-        else if ((board.getPiece(x + 1, y - 1) != null) &&
-                (board.getPiece(x + 1, y + 1).getBotPiece() != bot)) {
-            return (board.getPiece(x + 2, y - 2) == null);
-        }
-
-        else if ((board.getPiece(x - 1, y + 1) != null) &&
-                (board.getPiece(x + 1, y + 1).getBotPiece() != bot)) {
-            return (board.getPiece(x - 2, y + 2) == null);
-        }
-
-        else if ((board.getPiece(x - 1, y - 1) != null) &&
-                (board.getPiece(x + 1, y + 1).getBotPiece() != bot)) {
-            return (board.getPiece(x - 2, y - 2) == null);
-        }
-
-        else {
-            return false;
-        }
+        return moves;
     }
 
     public int getPlayerScore() {
