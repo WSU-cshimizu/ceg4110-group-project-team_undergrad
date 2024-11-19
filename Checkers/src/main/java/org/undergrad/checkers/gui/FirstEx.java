@@ -1,3 +1,5 @@
+package org.undergrad.checkers.gui;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -122,7 +124,7 @@ public class FirstEx extends Application {
             test.start(stage);
         });
         btnBotDifficulty.setOnAction((ActionEvent event) -> {
-            botDifficulty.showBotDifficulty(stage); // Call method to switch scenes
+            BotDifficulty.showBotDifficulty(stage); // Call method to switch scenes
         });
         btnSettings.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
@@ -130,13 +132,13 @@ public class FirstEx extends Application {
         });
         btnSeeStats.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
-            stats.showStats(stage);
+            Stats.showStats(stage);
         });
         btnExit.setOnAction((ActionEvent event) -> Platform.exit());
 
  
         btnLogout.setOnAction((ActionEvent event) -> {
-            loginPage test = new loginPage();
+            LoginPage test = new LoginPage();
             test.start(stage);
         });
 
