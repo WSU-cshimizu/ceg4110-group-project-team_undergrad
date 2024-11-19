@@ -1,0 +1,22 @@
+presentation (12minutes --> 11minutes + 1 minute for questions)
+Thursday, Dec 5th - 2nd presentation
+
+-----------
+
+intro slide - project name/team name/group members
+
+elevator pitch slide (30seconds)
+
+overview slide (presentation outline/architecture overview)
+	- components of complexity/figure of how they fit together
+
+slide for each unit of complexity
+	- user story
+	- requirement
+	- design 
+	- gif/figure/screenshot of code
+
+conclusion (statement of how you think the class went overall)
+1min ending for questions
+
+
