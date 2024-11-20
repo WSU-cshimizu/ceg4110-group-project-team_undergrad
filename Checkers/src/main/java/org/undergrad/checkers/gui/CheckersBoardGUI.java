@@ -4,6 +4,7 @@ import org.undergrad.checkers.game.*;
 import org.undergrad.checkers.bot.*;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class CheckersBoardGUI extends Application {
 
@@ -54,8 +57,8 @@ public class CheckersBoardGUI extends Application {
         HBox topPanel = new HBox(10);
         Button settingsButton = new Button("Settings");
         ComboBox<String> difficultyComboBox = new ComboBox<>();
-        difficultyComboBox.getItems().addAll("Easy", "Medium", "Hard");
-        difficultyComboBox.setValue("Medium");
+        difficultyComboBox.getItems().addAll("Medium", "Hard");
+        difficultyComboBox.setValue("Medium"); // Default selection        
 
         // Create a reset button
         Button resetButton = new Button("Reset");
@@ -130,10 +133,11 @@ public class CheckersBoardGUI extends Application {
 
         // Attempt to move the selected piece using the game logic
         if (game.movePiece(currentX, currentY, targetX, targetY, true)) {
-            System.out.println("TEST PIECE");
+            System.out.println("Moved player piece.");
             // Update the GUI after a successful player move
             drawPieces();
             deselect();
+            checkGameOver(); // Check if the game is over after the player's move
 
             // Trigger bot move after player move, if player is not controlling bot pieces
             botMove();
@@ -146,38 +150,88 @@ public class CheckersBoardGUI extends Application {
         Circle pieceCircle = (Circle) event.getSource();
         int x = GridPane.getColumnIndex(pieceCircle);
         int y = GridPane.getRowIndex(pieceCircle);
-
+    
         Piece piece = game.getBoard().getPiece(x, y);
         if (piece == null) {
             return;
         }
-
+    
+        // Prevent the player from selecting bot-controlled pieces
+        if (piece.getBotPiece()) {
+            System.out.println("You cannot move the bot's pieces.");
+            return; // Exit the method without selecting the piece
+        }
+    
         if (selectedPiece == null) {
             // Select the piece
             selectedPiece = piece;
             selectedPieceCircle = pieceCircle;
             selectedPieceCircle.setStroke(Color.YELLOW); // Highlight the selected piece
             System.out.println("Piece selected at x: " + x + ", y: " + y);
-
-            // Set the bot to move only the opposite color pieces
-            playerIsBot = selectedPiece.getBotPiece(); // Player controls the opposite of what they selected
         } else if (selectedPiece == piece) {
             // Deselect the piece if the same piece is clicked again
             deselect();
             System.out.println("Piece deselected.");
         }
-    }
+    }    
 
-    private void botMove() {
-        if (!playerIsBot) {
-            BotPlayer.Move botMove = game.getBotPlayer().determineMove();
-            if (botMove != null) {
-                game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
-                drawPieces(); // Update GUI after bot move
-                System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
+private void botMove() {
+    if (!playerIsBot) {
+        BotPlayer.Move botMove = game.getBotPlayer().determineMove();
+        if (botMove != null) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(2000); // Simulate bot "thinking"
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+    
+                Platform.runLater(() -> {
+                    game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
+                    drawPieces();
+                    System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
+                    checkGameOver(); // Check if the game is over after the bot's move
+                });
+            }).start();
+        }
+    }    
+}
+
+private void checkGameOver() {
+    int playerPieces = 0;
+    int botPieces = 0;
+
+    // Count remaining pieces for both sides
+    for (int row = 0; row < BOARD_SIZE; row++) {
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            Piece piece = game.getBoard().getPiece(col, row);
+            if (piece != null) {
+                if (piece.getBotPiece()) {
+                    botPieces++;
+                } else {
+                    playerPieces++;
+                }
             }
         }
     }
+
+    // If either player or bot has no pieces left, the game is over
+    if (playerPieces == 0 || botPieces == 0) {
+        String winner = playerPieces == 0 ? "Bot" : "Player";
+
+        // Show game over popup
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText(winner + " wins the game!");
+        alert.showAndWait();
+
+        // Optionally reset the board for a new game
+        resetBoard();
+    }
+}
+
+    
 
     private void deselect() {
         selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white
