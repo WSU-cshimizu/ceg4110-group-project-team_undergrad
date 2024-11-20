@@ -29,7 +29,8 @@ public class CheckersBoardGUI extends Application {
     private Piece selectedPiece = null; // Stores the actual piece currently selected.
     private GridPane boardGrid; // Used for storing the board.
     private boolean playerIsBot; // Determines if the player is controlling bot pieces or not
-
+    private boolean chainJumpInProgress = false; // Track if a chain jump is required
+    private Piece chainJumpPiece = null; // The piece involved in the chain jump
 
     private Game game; // Game instance to manage game logic.
 
@@ -120,39 +121,74 @@ public class CheckersBoardGUI extends Application {
 
     // Handle tile clicks for moving pieces
     private void handleTileClick(MouseEvent event) {
-        if (selectedPiece == null) {
-            return; // No piece is selected, so nothing to do here.
+        if (!playerTurn) {
+            System.out.println("Wait for the bot to complete its move.");
+            return; // Ignore clicks if it's not the player's turn
         }
-
+    
+        if (selectedPiece == null) {
+            return; // No piece is selected, so nothing to do here
+        }
+    
         Rectangle tile = (Rectangle) event.getSource();
         int targetY = GridPane.getRowIndex(tile);
         int targetX = GridPane.getColumnIndex(tile);
-
+    
         int currentX = selectedPiece.getX();
         int currentY = selectedPiece.getY();
-
+    
         // Attempt to move the selected piece using the game logic
         if (game.movePiece(currentX, currentY, targetX, targetY, true)) {
-            System.out.println("Moved player piece.");
-            // Update the GUI after a successful player move
             drawPieces();
             deselect();
+    
+            // Check if the move was a capturing move
+            boolean isCapture = Math.abs(currentX - targetX) == 2 && Math.abs(currentY - targetY) == 2;
+    
+            if (isCapture) {
+                // Check for chain jump possibility
+                boolean[] chainJumpMoves = game.chainJump(targetX, targetY, false);
+                if (chainJumpMoves[0] || chainJumpMoves[1] || chainJumpMoves[2] || chainJumpMoves[3]) {
+                    chainJumpInProgress = true;
+                    chainJumpPiece = game.getBoard().getPiece(targetX, targetY);
+                    System.out.println("Chain jump available! Continue jumping.");
+                    return; // Do not end the player's turn
+                }
+            }
+    
+            // If no capture or chain jump, end the player's turn
+            chainJumpInProgress = false;
+            chainJumpPiece = null;
             checkGameOver(); // Check if the game is over after the player's move
-
-            // Trigger bot move after player move, if player is not controlling bot pieces
-            botMove();
+            playerTurn = false; // End player's turn
+            botMove(); // Trigger bot's move
         } else {
             System.out.println("Invalid move. Try again.");
         }
     }
+    
+    
+
+    private boolean playerTurn = true; // Track if it's the player's turn
 
     private void handlePieceClick(MouseEvent event) {
+        if (!playerTurn) {
+            System.out.println("Wait for the bot to complete its move.");
+            return; // Ignore clicks if it's not the player's turn
+        }
+    
         Circle pieceCircle = (Circle) event.getSource();
         int x = GridPane.getColumnIndex(pieceCircle);
         int y = GridPane.getRowIndex(pieceCircle);
     
         Piece piece = game.getBoard().getPiece(x, y);
         if (piece == null) {
+            return;
+        }
+    
+        // Prevent selecting a different piece during a chain jump
+        if (chainJumpInProgress && piece != chainJumpPiece) {
+            System.out.println("You must continue with the same piece.");
             return;
         }
     
@@ -173,29 +209,32 @@ public class CheckersBoardGUI extends Application {
             deselect();
             System.out.println("Piece deselected.");
         }
-    }    
+    }
+      
 
-private void botMove() {
-    if (!playerIsBot) {
-        BotPlayer.Move botMove = game.getBotPlayer().determineMove();
-        if (botMove != null) {
-            new Thread(() -> {
-                try {
-                    Thread.sleep(2000); // Simulate bot "thinking"
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    private void botMove() {
+        if (!playerIsBot) {
+            BotPlayer.Move botMove = game.getBotPlayer().determineMove();
+            if (botMove != null) {
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(2000); // Simulate bot "thinking"
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
     
-                Platform.runLater(() -> {
-                    game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
-                    drawPieces();
-                    System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
-                    checkGameOver(); // Check if the game is over after the bot's move
-                });
-            }).start();
+                    Platform.runLater(() -> {
+                        game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
+                        drawPieces();
+                        System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
+                        checkGameOver(); // Check if the game is over after the bot's move
+    
+                        playerTurn = true; // Enable player's turn
+                    });
+                }).start();
+            }
         }
-    }    
-}
+    }
 
 private void checkGameOver() {
     int playerPieces = 0;
