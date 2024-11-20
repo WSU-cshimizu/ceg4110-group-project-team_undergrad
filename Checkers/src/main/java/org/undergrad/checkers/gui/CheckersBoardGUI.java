@@ -133,19 +133,10 @@ public class CheckersBoardGUI extends Application {
             System.out.println("TEST PIECE");
             // Update the GUI after a successful player move
             drawPieces();
-            selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white after moving
-            selectedPiece = null;
-            selectedPieceCircle = null;
+            deselect();
 
             // Trigger bot move after player move, if player is not controlling bot pieces
-            if (!playerIsBot) {
-                BotPlayer.Move botMove = game.getBotPlayer().determineMove();
-                if (botMove != null) {
-                    game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
-                    drawPieces(); // Update GUI after bot move
-                    System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
-                }
-            }
+            botMove();
         } else {
             System.out.println("Invalid move. Try again.");
         }
@@ -172,13 +163,27 @@ public class CheckersBoardGUI extends Application {
             playerIsBot = selectedPiece.getBotPiece(); // Player controls the opposite of what they selected
         } else if (selectedPiece == piece) {
             // Deselect the piece if the same piece is clicked again
-            selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white
-            selectedPiece = null;
-            selectedPieceCircle = null;
+            deselect();
             System.out.println("Piece deselected.");
         }
     }
 
+    private void botMove() {
+        if (!playerIsBot) {
+            BotPlayer.Move botMove = game.getBotPlayer().determineMove();
+            if (botMove != null) {
+                game.movePiece(botMove.getStartX(), botMove.getStartY(), botMove.getEndX(), botMove.getEndY(), true);
+                drawPieces(); // Update GUI after bot move
+                System.out.println("Bot moved from (" + botMove.getStartX() + ", " + botMove.getStartY() + ") to (" + botMove.getEndX() + ", " + botMove.getEndY() + ")");
+            }
+        }
+    }
+
+    private void deselect() {
+        selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white
+        selectedPiece = null;
+        selectedPieceCircle = null;
+    }
 
     public static void main(String[] args) {
         launch(args);
