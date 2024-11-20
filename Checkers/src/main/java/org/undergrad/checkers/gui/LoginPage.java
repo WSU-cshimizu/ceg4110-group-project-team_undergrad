@@ -44,7 +44,28 @@ public class LoginPage extends Application {
         Button quitButton = new Button("Quit");
 
         // Set actions for buttons (assuming you have other scenes to navigate to)
-        loginButton.setOnAction(e -> goToMenu(stage)); // Method to go to main menu
+        loginButton.setOnAction((ActionEvent event) -> {
+
+            // Declare variables
+            String userName = null;
+            String password = null;
+
+            // Assign user information values
+            userName = usernameField.getText();
+            password = passwordField.getText();
+
+            // Check code
+            System.out.println(userName + " " + password);
+
+            //================================================================
+            //TODO: Add a username and password check here
+
+            //================================================================
+
+            // Further change this once login is fully completed
+            goToMenu(stage);  // Method to go to main menu
+
+        }); // Method to go to main menu
         guestButton.setOnAction(e -> goToMenu(stage));
         quitButton.setOnAction(e -> stage.close());
 
