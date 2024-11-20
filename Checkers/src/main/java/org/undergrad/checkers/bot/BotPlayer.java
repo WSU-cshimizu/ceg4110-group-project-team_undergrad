@@ -10,11 +10,18 @@ public class BotPlayer {
     private Game game;
     private Board board;
     private Random random;
+    private String difficulty; // Tracks difficulty level
 
     public BotPlayer(Game game) {
         this.game = game;
         this.board = game.getBoard();
         this.random = new Random();
+        this.difficulty = "Medium"; // Default difficulty
+    }
+
+    // Set difficulty level
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 
     // Determine the next move for the bot
@@ -25,8 +32,49 @@ public class BotPlayer {
             return null; // No valid moves available
         }
 
-        // Randomly choose a move from possible moves
+        // Use weighted logic for "Hard" difficulty
+        if ("Hard".equalsIgnoreCase(difficulty)) {
+            return determineWeightedMove(possibleMoves);
+        }
+
+        // Default to random moves for "Medium"
         return possibleMoves.get(random.nextInt(possibleMoves.size()));
+    }
+
+    // Weighted move determination for "Hard" difficulty
+    private Move determineWeightedMove(List<Move> possibleMoves) {
+        List<Move> capturingMoves = new ArrayList<>();
+        List<Move> nonCapturingMoves = new ArrayList<>();
+
+        for (Move move : possibleMoves) {
+            if (isCapturingMove(move)) {
+                capturingMoves.add(move);
+            } else {
+                nonCapturingMoves.add(move);
+            }
+        }
+
+        // Prioritize capturing moves
+        if (!capturingMoves.isEmpty()) {
+            return capturingMoves.get(random.nextInt(capturingMoves.size()));
+        }
+
+        // Otherwise, choose a random non-capturing move
+        return nonCapturingMoves.get(random.nextInt(nonCapturingMoves.size()));
+    }
+
+    // Helper Method to Check if a Move is a Capturing Move
+    private boolean isCapturingMove(Move move) {
+        int midX = (move.getStartX() + move.getEndX()) / 2;
+        int midY = (move.getStartY() + move.getEndY()) / 2;
+
+        // Check if the middle position contains an opponent's piece
+        Piece middlePiece = board.getPiece(midX, midY);
+        if (middlePiece != null && middlePiece.getBotPiece() != board.getPiece(move.getStartX(), move.getStartY()).getBotPiece()) {
+            return true; // Capturing move
+        }
+
+        return false;
     }
 
     private List<Move> getAllPossibleMoves() {
