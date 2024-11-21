@@ -178,7 +178,7 @@ public class FirstEx extends Application {
     // Set background color or image (choose one)
     gridPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
     //     // setBackgroundImage(root, "path_to_image.jpg"); // Set your image path here
-    setBackgroundImage(gridPane, "test.png");
+    // setBackgroundImage(gridPane, "test.png");
 
 
         // // Create the logout button
