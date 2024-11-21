@@ -118,7 +118,7 @@ public class FirstEx extends Application {
             // TODO: Make further implementation
             Settings.showSettings(stage); // Call method to switch scenes
         });
-        
+
         btnSeeStats.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
             Stats.showStats(stage);
