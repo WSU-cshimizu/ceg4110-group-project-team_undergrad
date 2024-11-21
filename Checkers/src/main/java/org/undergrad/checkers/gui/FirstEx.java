@@ -36,7 +36,6 @@ public class FirstEx extends Application {
     // The actual start of the intialization
     public static void initUI(Stage stage) {
 
-        BorderPane newRoots = new BorderPane();
         // Base pane
         GridPane gridPane = new GridPane();    
 
@@ -55,17 +54,6 @@ public class FirstEx extends Application {
         //Setting the Grid alignment 
         gridPane.setAlignment(Pos.CENTER); 
 
-        // StackPane root = new StackPane();
-
-        // // VBox to hold the buttons vertically
-        // VBox vBox = new VBox(20); // 20 is the spacing between the buttons
-        // vBox.setAlignment(Pos.CENTER); // Align VBox in the center
-
-        // VBox right = new VBox(20);
-        // right.setAlignment(Pos.BOTTOM_RIGHT);
-
-        // HBox logoutBox = new HBox();
-        // logoutBox.setAlignment(Pos.BOTTOM_RIGHT);
 
         // Creating buttons with specific names
         Button btnStartGame = new Button("Start Game");
@@ -130,12 +118,13 @@ public class FirstEx extends Application {
             // TODO: Make further implementation
             Settings.showSettings(stage); // Call method to switch scenes
         });
+        
         btnSeeStats.setOnAction((ActionEvent event) -> {
             // TODO: Make further implementation
             Stats.showStats(stage);
         });
-        btnExit.setOnAction((ActionEvent event) -> Platform.exit());
 
+        btnExit.setOnAction((ActionEvent event) -> Platform.exit());
  
         btnLogout.setOnAction((ActionEvent event) -> {
             LoginPage test = new LoginPage();
@@ -158,22 +147,6 @@ public class FirstEx extends Application {
         gridPane.add(btnExit, 3, 7);
         gridPane.add(btnLogout, 5, 13);
 
-    //     // Adding buttons to VBox
-    //     vBox.getChildren().addAll(btnStartGame, btnBotDifficulty, btnSettings, btnSeeStats, btnExit);
-
-    //     // right.getChildren().addAll(btnLogout);
-    //     logoutBox.getChildren().add(btnLogout);
-
-
-    //     // Adding VBox to the root pane
-    //    // Adding VBox to the root pane
-    //     root.getChildren().add(vBox); // Centered by default in StackPane
-    //     // root.getChildren().add(logoutBox); // Align to bottom-right
-
-    //     // Set the alignment for logoutBox
-    //     StackPane.setAlignment(logoutBox, Pos.BOTTOM_RIGHT);
-
-        
 
     // Set background color or image (choose one)
     gridPane.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -181,27 +154,6 @@ public class FirstEx extends Application {
     // setBackgroundImage(gridPane, "test.png");
 
 
-        // // Create the logout button
-        // Button btnLogout = new Button("Logout");
-        // setButtonSize(btnLogout);
-
-        // // Handle the logout action
-        // btnLogout.setOnAction(e -> {
-        //     loginPage loginPage = new loginPage();
-        //     try {
-        //         loginPage.start(stage); // Return to the login page
-        //     } catch (Exception ex) {
-        //         ex.printStackTrace();
-        //     }
-        // });
-
-        // // Place the logout button in the bottom-right corner
-        // HBox logoutBox = new HBox();
-        // logoutBox.setAlignment(Pos.BOTTOM_RIGHT);
-        // logoutBox.getChildren().add(btnLogout);
-        // StackPane.setAlignment(logoutBox, Pos.BOTTOM_RIGHT); // Position it at the bottom-right of the StackPane
-        // root.getChildren().add(logoutBox);
-        
 
         // Scene setup
         Scene scene = new Scene(gridPane, 1000, 800);
@@ -225,30 +177,30 @@ public class FirstEx extends Application {
         pane.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, null)));
     }
 
-// Method to set background image
-private static void setBackgroundImage(GridPane pane, String imagePath) {
-    // Load the image
-    Image image = new Image(imagePath);
-    
-    // Configure the BackgroundImage
-    BackgroundImage bgImage = new BackgroundImage(
-        image, 
-        BackgroundRepeat.NO_REPEAT, // No repeating
-        BackgroundRepeat.NO_REPEAT, // No repeating
-        BackgroundPosition.CENTER,  // Center the image
-        new BackgroundSize(
-            BackgroundSize.DEFAULT.getWidth(), // Use default width (image's original width)
-            BackgroundSize.DEFAULT.getHeight(), // Use default height (image's original height)
-            true, // Scale width proportionally
-            true, // Scale height proportionally
-            true, // Cover the entire pane
-            false // Do not contain within original aspect ratio
-        )
-    );
+    // Method to set background image
+    private static void setBackgroundImage(GridPane pane, String imagePath) {
+        // Load the image
+        Image image = new Image(imagePath);
+        
+        // Configure the BackgroundImage
+        BackgroundImage bgImage = new BackgroundImage(
+            image, 
+            BackgroundRepeat.NO_REPEAT, // No repeating
+            BackgroundRepeat.NO_REPEAT, // No repeating
+            BackgroundPosition.CENTER,  // Center the image
+            new BackgroundSize(
+                BackgroundSize.DEFAULT.getWidth(), // Use default width (image's original width)
+                BackgroundSize.DEFAULT.getHeight(), // Use default height (image's original height)
+                true, // Scale width proportionally
+                true, // Scale height proportionally
+                true, // Cover the entire pane
+                false // Do not contain within original aspect ratio
+            )
+        );
 
-    // Set the background of the pane
-    pane.setBackground(new Background(bgImage));
-}
+        // Set the background of the pane
+        pane.setBackground(new Background(bgImage));
+    }
 
 
     // Method to switch scenes
