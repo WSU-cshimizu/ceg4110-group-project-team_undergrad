@@ -7,7 +7,7 @@
 
 
 ## Agenda
-
+* Review due dates and current work.
 
 ## Notes
 
