@@ -18,7 +18,9 @@ Need to begin powerpoint creation next week.
 
 ## Action Items
 * Vichaka
-  * 
+  * Make stat button functional. 
+  * Continue updating the background for the Login page and main menu.
+  * Review some of the previous documents to match current standing.
 * Logan
   * Enable the settings button to return to the title screen.
   * Add in a way to show available moves.
@@ -28,4 +30,5 @@ Need to begin powerpoint creation next week.
 
 ## Signatures
 * Logan Scarberry
+* Vichaka Houi
 
