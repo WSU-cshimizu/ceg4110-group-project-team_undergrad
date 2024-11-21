@@ -26,9 +26,11 @@ Need to begin powerpoint creation next week.
   * Add in a way to show available moves.
   * Change variables to allow color changing.
 * Michael
+  * Connect database with relevant aspects of program such as login and settings
  
 
 ## Signatures
 * Logan Scarberry
 * Vichaka Houi
+* Michael Mowad
 
