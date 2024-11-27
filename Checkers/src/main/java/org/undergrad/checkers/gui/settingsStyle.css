@@ -1,0 +1,20 @@
+.text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.button {
+    -fx-background-color: #0078D7;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-size: 24px;
+    -fx-padding: 10px;
+}
+
+
+.slider {
+    -fx-control-inner-background: #dddddd;
+    -fx-tick-label-fill: #333333;
+    -fx-tick-mark-fill: #333333;
+    -fx-track-color: #4CAF50;
+    -fx-thumb-fill: #2196F3;
+}

@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class Settings {
     
 
-    public static void showSettings(Stage stage) {
+    public void showSettings(Stage stage) {
         // Root pane for the bot difficulty scene
         BorderPane rootPane = new BorderPane();
 
@@ -30,24 +30,35 @@ public class Settings {
 
 
         // Difficulty buttons
-        Button Easy = new Button("Sound");
+        Button sound = new Button("Sound");
         Slider slider = new Slider(0, 1, 0.5);
         slider.setShowTickMarks(true);
         slider.setShowTickLabels(true);
         slider.setMajorTickUnit(0.1f);
         slider.setBlockIncrement(0.1f);
 
+        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            double value = newValue.doubleValue();
+            double increment = 0.01; // Your desired increment
+            double roundedValue = Math.round(value / increment) * increment;
+            slider.setValue(roundedValue);
+        });
+
+        double soundValue = slider.getValue();
+        System.out.println(soundValue);
+        
+
         // Label to display the selected difficulty
-        Label selectedDifficultyLabel = new Label(); // This will show the selected difficulty
+        Label setSettingsLabel = new Label(); // This will show the selected difficulty
 
         // Set button sizes
-        setButtonSize(Easy);
+        setButtonSize(sound);
         slider.setMinWidth(600);
         slider.setMaxWidth(600);
 
 
         // Add label, buttons, and selected difficulty label to the VBox
-        vBox.getChildren().addAll(Easy, selectedDifficultyLabel, slider);
+        vBox.getChildren().addAll(sound, setSettingsLabel, slider);
 
         // Place the VBox in the center of the BorderPane
         rootPane.setCenter(vBox);
@@ -68,6 +79,7 @@ public class Settings {
 
         // Set up the scene
         Scene settingScene = new Scene(rootPane, 1000, 800);
+        settingScene.getStylesheets().add(getClass().getResource("settingsStyle.css").toExternalForm());
         stage.setScene(settingScene);
         stage.show();
     }

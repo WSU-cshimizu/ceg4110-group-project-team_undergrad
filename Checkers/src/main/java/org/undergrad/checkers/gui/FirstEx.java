@@ -104,7 +104,7 @@ public class FirstEx extends Application {
         setButtonSize(test9);
 
 
-        // Exit action for buttons (temporary, for testing)
+         // Exit action for buttons (temporary, for testing)
         // btnStartGame.setOnAction((ActionEvent event) -> Platform.exit());
         btnStartGame.setOnAction((ActionEvent event) -> {
             // CheckersBoardGUI.StartUI(stage);
@@ -112,24 +112,27 @@ public class FirstEx extends Application {
             test.start(stage);
         });
         btnBotDifficulty.setOnAction((ActionEvent event) -> {
-            BotDifficulty.showBotDifficulty(stage); // Call method to switch scenes
+            BotDifficulty botPage = new BotDifficulty();
+            botPage.showBotDifficulty(stage);
         });
         btnSettings.setOnAction((ActionEvent event) -> {
-            // TODO: Make further implementation
-            Settings.showSettings(stage); // Call method to switch scenes
-        });
+            Settings playerSettings = new Settings();
+            playerSettings.showSettings(stage); // Call method to switch scenes
 
+        });
         btnSeeStats.setOnAction((ActionEvent event) -> {
-            // TODO: Make further implementation
-            Stats.showStats(stage);
-        });
+            Stats playerStats = new Stats();
+            playerStats.showStats(stage); // Call method to switch scenes
 
+        });
         btnExit.setOnAction((ActionEvent event) -> Platform.exit());
+
  
         btnLogout.setOnAction((ActionEvent event) -> {
             LoginPage test = new LoginPage();
             test.start(stage);
         });
+
 
         
         gridPane.add(test1, 4, 5);
