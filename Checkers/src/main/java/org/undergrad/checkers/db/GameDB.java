@@ -104,16 +104,37 @@ public class GameDB {
 
     // createUser
     // Inserts new user into database and creates appropriate records
-    public static void createUser(int userID, String username, String password) {
+    public static void createUser(String username, String password) {
         try (Connection c = connect();) {
             Statement stmt = c.createStatement();
-            String sql = ("INSERT INTO USERS (USERID,USERNAME,PASSWORD) "
-                    + "VALUES (" + userID + ", '" + username + "', '" + password + "');");
+            String sql = ("INSERT INTO USERS (USERNAME, PASSWORD) "
+                    + "VALUES ('" + username + "', '" + password + "');");
 
             stmt.executeUpdate(sql);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    // findUser
+    public static int findUser(String username, String password) {
+        try (Connection c = connect();) {
+            String sql = ("SELECT * FROM USERS WHERE USERNAME = '" + username + "'");
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            // Return 0 is username not in system
+            if (!rs.isBeforeFirst()) {
+                return 0;
+            }
+            else if (rs.getString("PASSWORD").equals(password)) {
+                return rs.getInt("USERID");
+            // Return -1 if password incorrect for given username
+            } else
+                return -1;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -2;
         }
     }
 
