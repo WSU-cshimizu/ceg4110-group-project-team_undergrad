@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.undergrad.checkers.db.*;
 
 public class LoginPage extends Application {
 
@@ -58,10 +59,16 @@ public class LoginPage extends Application {
             // Check code
             System.out.println(userName + " " + password);
 
-            //================================================================
-            //TODO: Add a username and password check here
+            //Check if valid login
+            int userID = GameDB.findUser(userName, password);
 
-            //================================================================
+            if (userID == 0) {
+                System.out.println("User not found... Creating new user");
+                GameDB.createUser(userName, password);
+                userID = GameDB.findUser(userName, password);
+            } else if (userID == -1) {
+                System.out.println("Username already or incorrect password");
+            }
 
             // Further change this once login is fully completed
             goToMenu(stage);  // Method to go to main menu
