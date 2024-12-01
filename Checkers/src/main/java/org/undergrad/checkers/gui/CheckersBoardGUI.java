@@ -59,14 +59,20 @@ public class CheckersBoardGUI extends Application {
         Button settingsButton = new Button("Settings");
         ComboBox<String> difficultyComboBox = new ComboBox<>();
         difficultyComboBox.getItems().addAll("Medium", "Hard");
-        difficultyComboBox.setValue("Medium"); // Default selection        
+        difficultyComboBox.setValue("Medium"); // Default selection
 
         // Create a reset button
         Button resetButton = new Button("Reset");
         resetButton.setOnAction(e -> resetBoard()); // Set action to reset the board
 
+        // Set action for settings button to go back to the main menu
+        settingsButton.setOnAction(e -> {
+            FirstEx.initUI((Stage) settingsButton.getScene().getWindow());
+        });
+
         topPanel.getChildren().addAll(settingsButton, difficultyComboBox, resetButton);
         root.setTop(topPanel);
+
 
         // Make everything visible and add a title.
         Scene scene = new Scene(root);
@@ -167,6 +173,92 @@ public class CheckersBoardGUI extends Application {
         }
     }
     
+
+    private boolean isWithinBounds(int x, int y) {
+        return x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    }
+    
+    
+    private void highlightAvailableMoves(Piece piece) {
+        // Clear previous highlights
+        boardGrid.getChildren().removeIf(node -> node instanceof Rectangle && node.getUserData() != null);
+    
+        if (piece == null) return;
+    
+        int currentX = piece.getX();
+        int currentY = piece.getY();
+    
+        // Define possible move directions
+        int[][] directions = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+    
+        for (int[] direction : directions) {
+            // Normal move
+            int targetX = currentX + direction[0];
+            int targetY = currentY + direction[1];
+    
+            if (isWithinBounds(targetX, targetY) && game.movePiece(currentX, currentY, targetX, targetY, false)) {
+                drawHighlight(targetX, targetY, piece);
+                game.undoMove(currentX, currentY, targetX, targetY); // Undo temporary move
+            }
+    
+            // Jump move
+            int jumpX = currentX + 2 * direction[0];
+            int jumpY = currentY + 2 * direction[1];
+    
+            if (isWithinBounds(jumpX, jumpY) && game.movePiece(currentX, currentY, jumpX, jumpY, false)) {
+                drawHighlight(jumpX, jumpY, piece);
+                game.undoMove(currentX, currentY, jumpX, jumpY); // Undo temporary move
+            }
+        }
+    }
+    
+    // Helper to draw highlights with click handlers
+    private void drawHighlight(int x, int y, Piece piece) {
+        Rectangle highlight = new Rectangle(TILE_SIZE, TILE_SIZE, Color.LIGHTGREEN);
+        highlight.setOpacity(0.5); // Make it translucent
+        highlight.setUserData("highlight"); // Mark as a highlight tile
+    
+        // Add a click handler to move the piece
+        highlight.setOnMouseClicked(event -> {
+            int currentX = piece.getX();
+            int currentY = piece.getY();
+    
+            // Attempt the move
+            if (game.movePiece(currentX, currentY, x, y, true)) {
+                drawPieces();
+                deselect();
+    
+                // Check if a capturing move was made
+                boolean isCapture = Math.abs(currentX - x) == 2 && Math.abs(currentY - y) == 2;
+    
+                if (isCapture) {
+                    // Check for chain jumps
+                    boolean[] chainJumpMoves = game.chainJump(x, y, false);
+                    if (chainJumpMoves[0] || chainJumpMoves[1] || chainJumpMoves[2] || chainJumpMoves[3]) {
+                        chainJumpInProgress = true;
+                        chainJumpPiece = game.getBoard().getPiece(x, y);
+                        System.out.println("Chain jump available! Continue jumping.");
+                        return; // Do not end the player's turn
+                    }
+                }
+    
+                // End the player's turn
+                chainJumpInProgress = false;
+                chainJumpPiece = null;
+                checkGameOver(); // Check for game over
+                playerTurn = false; // End the player's turn
+                botMove(); // Trigger bot's move
+            } else {
+                System.out.println("Invalid move. Try again.");
+            }
+        });
+    
+        boardGrid.add(highlight, x, y);
+        GridPane.setHalignment(highlight, HPos.CENTER);
+        GridPane.setValignment(highlight, VPos.CENTER);
+    }
+    
+    
     
 
     private boolean playerTurn = true; // Track if it's the player's turn
@@ -182,9 +274,7 @@ public class CheckersBoardGUI extends Application {
         int y = GridPane.getRowIndex(pieceCircle);
     
         Piece piece = game.getBoard().getPiece(x, y);
-        if (piece == null) {
-            return;
-        }
+        if (piece == null) return;
     
         // Prevent selecting a different piece during a chain jump
         if (chainJumpInProgress && piece != chainJumpPiece) {
@@ -195,21 +285,23 @@ public class CheckersBoardGUI extends Application {
         // Prevent the player from selecting bot-controlled pieces
         if (piece.getBotPiece()) {
             System.out.println("You cannot move the bot's pieces.");
-            return; // Exit the method without selecting the piece
+            return;
         }
     
         if (selectedPiece == null) {
-            // Select the piece
+            // Select the piece and highlight moves
             selectedPiece = piece;
             selectedPieceCircle = pieceCircle;
             selectedPieceCircle.setStroke(Color.YELLOW); // Highlight the selected piece
             System.out.println("Piece selected at x: " + x + ", y: " + y);
+            highlightAvailableMoves(selectedPiece);
         } else if (selectedPiece == piece) {
             // Deselect the piece if the same piece is clicked again
             deselect();
             System.out.println("Piece deselected.");
         }
     }
+    
       
 
     private void botMove() {
