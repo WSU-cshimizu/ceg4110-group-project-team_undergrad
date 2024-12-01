@@ -18,7 +18,7 @@ public class Game {
     }
 
     // Game constructor that loads saved score and board state
-    public Game(int playerScore, int botScore, Piece[][] boardSave) {
+    public Game(int playerScore, int botScore, String boardSave) {
         board = new Board(boardSave);
         this.playerScore = playerScore;
         this.botScore = botScore;

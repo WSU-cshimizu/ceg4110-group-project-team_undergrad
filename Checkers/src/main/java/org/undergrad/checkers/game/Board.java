@@ -25,10 +25,26 @@ public class Board {
         }
     }
 
-    // Constructor with input board array: Loads saved board
-    public Board(Piece[][] boardSave) {
-        // Set board to boardSave
-        board = boardSave;
+    // Board Constructor with Save String
+    // Populates the board based on the saved String
+    public Board(String save) {
+        int index = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                // Extract character from index and increment index
+                char c = save.charAt(index);
+                index++;
+
+                // Create piece based on char
+                if (c == '0') {
+                    board[j][i] = null;
+                } else if (c == '1') {
+                    board[j][i] = new Piece(true, j, i);
+                } else {
+                    board[j][i] = new Piece(false, j, i);
+                }
+            }
+        }
     }
 
     // Get piece from coords
@@ -60,5 +76,23 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    // Export
+    // Exports board to a string where 0 = null, 1 = bot piece, 2 = player piece
+    public String export() {
+        String save = "";
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (board[j][i] == null) {
+                    save += "0";
+                } else if (board[j][i].getBotPiece()) {
+                    save += "1";
+                } else {
+                    save += "2";
+                }
+            }
+        }
+        return save;
     }
 }

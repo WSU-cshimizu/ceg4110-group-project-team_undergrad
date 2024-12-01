@@ -27,6 +27,8 @@ import javafx.stage.Stage;
 
 public class FirstEx extends Application {
 
+    private static int userID = 0;
+
     @Override
     public void start(Stage stage) {
 
@@ -235,6 +237,13 @@ public class FirstEx extends Application {
         stage.show();
     }
 
+    public static void setUserID(int newuserID) {
+        userID = newuserID;
+    }
+
+    public static int getUserID() {
+        return userID;
+    }
 
     public static void main(String[] args) {
         launch(args);

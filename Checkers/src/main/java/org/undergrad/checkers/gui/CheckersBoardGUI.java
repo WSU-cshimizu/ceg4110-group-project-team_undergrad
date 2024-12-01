@@ -1,5 +1,6 @@
 package org.undergrad.checkers.gui;
 
+import org.undergrad.checkers.db.GameDB;
 import org.undergrad.checkers.game.*;
 import org.undergrad.checkers.bot.*;
 
@@ -31,19 +32,24 @@ public class CheckersBoardGUI extends Application {
     private boolean playerIsBot; // Determines if the player is controlling bot pieces or not
     private boolean chainJumpInProgress = false; // Track if a chain jump is required
     private Piece chainJumpPiece = null; // The piece involved in the chain jump
+    private int userID = 0;
 
     private Game game; // Game instance to manage game logic.
 
     @Override
     public void start(Stage primaryStage) {
         // Initialize the game
-        game = new Game(); // This creates a new board and sets initial positions for pieces.
+
+        userID = FirstEx.getUserID();
+
+        if (userID == 0 || GameDB.loadBoard(userID) == null) {
+            game = new Game(); // This creates a new board and sets initial positions for pieces.
+        } else {
+            game = new Game(0, 0, GameDB.loadBoard(userID));
+        }
 
         boardGrid = new GridPane();
-
         playerIsBot = false; // Default to player controlling player pieces.
-
-
         // Create the board
         drawBoard();
 
