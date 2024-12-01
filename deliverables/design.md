@@ -57,3 +57,13 @@
 8. AI 
 
 	8.1. The AI will read from the database to determine the most recent move made and run a method based on the move as well as the difficulty selected by the user to determine the AI's move. 
+
+# Diagrams
+Dataflow
+![Dataflow](../Minutes/dataflow.png)
+Swimlane
+![Swimlane](../Minutes/swimlane.png)
+UML
+![UML](../Minutes/UML.png)
+Interaction Overview UML Diagram
+![InteractionOverview](../Minutes/InteractionOverviewUMLDiagram.png)
