@@ -158,7 +158,13 @@ public class FirstEx extends Application {
     //     // setBackgroundImage(root, "path_to_image.jpg"); // Set your image path here
     // setBackgroundImage(gridPane, "test.png");
 
-
+    // Load and apply the CSS file
+    String cssFile = FirstEx.class.getResource("style.css").toExternalForm();
+    if (cssFile != null) {
+        scene.getStylesheets().add(cssFile);
+    } else {
+        System.out.println("CSS file not found.");
+    }
 
         // Scene setup
         Scene scene = new Scene(gridPane, 1000, 800);
