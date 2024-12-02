@@ -92,6 +92,7 @@ public class LoginPage extends Application {
 
         // Set up the scene
         Scene scene = new Scene(layout, 1000, 800);
+        scene.getStylesheets().add(LoginPage.class.getResource("/org/undergrad/checkers/style.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Login Page");
         stage.show();

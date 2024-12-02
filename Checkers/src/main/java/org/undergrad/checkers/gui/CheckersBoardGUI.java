@@ -71,6 +71,14 @@ public class CheckersBoardGUI extends Application {
         Button resetButton = new Button("Reset");
         resetButton.setOnAction(e -> resetBoard()); // Set action to reset the board
 
+        // Create a quit button
+        Button quitButton = new Button("Quit");
+        quitButton.setOnAction(e -> System.exit(0));
+
+        // Create a save and quit button
+        Button saveQuitButton = new Button("Save & Quit");
+        saveQuitButton.setOnAction(e -> saveQuit());
+
         // Set action for settings button to go back to the main menu
         settingsButton.setOnAction(e -> {
             FirstEx.initUI((Stage) settingsButton.getScene().getWindow());
@@ -381,6 +389,12 @@ private void checkGameOver() {
         selectedPieceCircle.setStroke(Color.WHITE); // Reset highlight to white
         selectedPiece = null;
         selectedPieceCircle = null;
+    }
+
+    private void saveQuit() {
+        String save = game.getBoard().export();
+        GameDB.saveBoard(userID, save);
+        System.exit(0);
     }
 
     public static void main(String[] args) {

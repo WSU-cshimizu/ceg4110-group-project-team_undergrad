@@ -79,7 +79,7 @@ public class Settings {
 
         // Set up the scene
         Scene settingScene = new Scene(rootPane, 1000, 800);
-        settingScene.getStylesheets().add(getClass().getResource("settingsStyle.css").toExternalForm());
+        settingScene.getStylesheets().add(getClass().getResource("/org/undergrad/checkers/settingsStyle.css").toExternalForm());
         stage.setScene(settingScene);
         stage.show();
     }

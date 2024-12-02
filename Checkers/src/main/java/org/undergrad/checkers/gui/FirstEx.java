@@ -11,18 +11,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class FirstEx extends Application {
@@ -158,17 +155,17 @@ public class FirstEx extends Application {
     //     // setBackgroundImage(root, "path_to_image.jpg"); // Set your image path here
     // setBackgroundImage(gridPane, "test.png");
 
-    // Load and apply the CSS file
-    String cssFile = FirstEx.class.getResource("style.css").toExternalForm();
-    if (cssFile != null) {
-        scene.getStylesheets().add(cssFile);
-    } else {
-        System.out.println("CSS file not found.");
-    }
 
         // Scene setup
         Scene scene = new Scene(gridPane, 1000, 800);
-    
+
+        // Load and apply the CSS file
+        String cssFile = FirstEx.class.getResource("/org/undergrad/checkers/FirstEx.css").toString(); //FirstEx.class.getResource("style.css").toExternalForm();
+        if (cssFile != null) {
+            scene.getStylesheets().add(cssFile);
+        } else {
+            System.out.println("CSS file not found.");
+        }
 
         // Stage setup
         stage.setTitle("Game Menu");

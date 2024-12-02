@@ -85,6 +85,7 @@ public class BotDifficulty {
 
         // Set up the scene
         Scene settingScene = new Scene(rootPane, 1000, 800);
+        settingScene.getStylesheets().add(BotDifficulty.class.getResource("/org/undergrad/checkers/style.css").toExternalForm());
         stage.setScene(settingScene);
         stage.show();
     }

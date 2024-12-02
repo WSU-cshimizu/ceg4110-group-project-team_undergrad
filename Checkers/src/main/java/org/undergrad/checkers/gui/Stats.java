@@ -45,7 +45,7 @@ public class Stats  {
 
         // Create the scene and show the stage
         Scene scene = new Scene(root, 1000, 800);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/org/undergrad/checkers/style.css").toExternalForm());
 
         stage.setTitle("Player Stats");
         stage.setScene(scene);
