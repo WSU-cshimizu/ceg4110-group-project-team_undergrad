@@ -177,11 +177,15 @@ public class CheckersBoardGUI extends Application {
     private boolean isWithinBounds(int x, int y) {
         return x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
     }
+
+    private void clearHighlights() {
+        boardGrid.getChildren().removeIf(node -> node instanceof Rectangle && "highlight".equals(node.getUserData()));
+    }    
     
     
     private void highlightAvailableMoves(Piece piece) {
         // Clear previous highlights
-        boardGrid.getChildren().removeIf(node -> node instanceof Rectangle && node.getUserData() != null);
+        clearHighlights();
     
         if (piece == null) return;
     
@@ -212,6 +216,7 @@ public class CheckersBoardGUI extends Application {
         }
     }
     
+    
     // Helper to draw highlights with click handlers
     private void drawHighlight(int x, int y, Piece piece) {
         Rectangle highlight = new Rectangle(TILE_SIZE, TILE_SIZE, Color.LIGHTGREEN);
@@ -227,8 +232,9 @@ public class CheckersBoardGUI extends Application {
             if (game.movePiece(currentX, currentY, x, y, true)) {
                 drawPieces();
                 deselect();
+                clearHighlights(); // Clear highlights after the move
     
-                // Check if a capturing move was made
+                // Check if the move was a capturing move
                 boolean isCapture = Math.abs(currentX - x) == 2 && Math.abs(currentY - y) == 2;
     
                 if (isCapture) {
@@ -257,6 +263,7 @@ public class CheckersBoardGUI extends Application {
         GridPane.setHalignment(highlight, HPos.CENTER);
         GridPane.setValignment(highlight, VPos.CENTER);
     }
+    
     
     
     
