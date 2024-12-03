@@ -22,6 +22,7 @@ public class Game {
         board = new Board(boardSave);
         this.playerScore = playerScore;
         this.botScore = botScore;
+        botPlayer = new BotPlayer(this);
     }
 
     // Add a getter method to access the BotPlayer

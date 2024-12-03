@@ -138,4 +138,62 @@ public class GameDB {
         }
     }
 
+    public static String getUsername(int userID) {
+        try (Connection c = connect();) {
+            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM USERS WHERE USERID = " + userID);
+            String username = rs.getString("USERNAME");
+            return username;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return "";
+        }
+    }
+
+    public static void setWins(int userID, int wins) {
+        try (Connection c = connect();) {
+            Statement stmt = c.createStatement();
+            String sql = "UPDATE USERS SET WINS = '" + wins + "' WHERE USERID = " + userID;
+            stmt.executeUpdate(sql);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static int getWins(int userID) {
+        try (Connection c = connect();) {
+            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM USERS WHERE USERID = " + userID);
+            int wins = rs.getInt("WINS");
+            return wins;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
+    public static void setLosses(int userID, int losses) {
+        try (Connection c = connect();) {
+            Statement stmt = c.createStatement();
+            String sql = "UPDATE USERS SET LOSSES = '" + losses + "' WHERE USERID = " + userID;
+            stmt.executeUpdate(sql);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static int getLosses(int userID) {
+        try (Connection c = connect();) {
+            ResultSet rs = c.createStatement().executeQuery("SELECT * FROM USERS WHERE USERID = " + userID);
+            int losses = rs.getInt("LOSSES");
+            return losses;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+    }
+
 }

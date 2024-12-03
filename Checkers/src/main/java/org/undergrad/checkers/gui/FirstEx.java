@@ -90,6 +90,7 @@ public class FirstEx extends Application {
         setButtonSize(btnSeeStats);
         setButtonSize(btnExit);
         setButtonSize(btnLogout);
+        setButtonSize(btnLogin);
     
         // Set button size for fuller locations
         setButtonSize(test1);

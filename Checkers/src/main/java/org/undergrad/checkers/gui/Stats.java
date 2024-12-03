@@ -9,14 +9,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.undergrad.checkers.game.userID;
+import org.undergrad.checkers.db.GameDB;
 
 public class Stats  {
 
     public void showStats(Stage stage) {
-        // User stats (replace these values with actual stats from your data)
-        String username = "Player123";
-        int wins = 25;
-        int losses = 10;
+
+        String username = GameDB.getUsername(userID.getUserID());
+        int wins = GameDB.getWins(userID.getUserID());
+        int losses = GameDB.getLosses(userID.getUserID());
         int totalGames = wins + losses;
         double winRatio = totalGames > 0 ? (double) wins / totalGames * 100 : 0;
 

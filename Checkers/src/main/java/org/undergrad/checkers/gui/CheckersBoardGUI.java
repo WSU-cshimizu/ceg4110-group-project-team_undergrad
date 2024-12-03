@@ -376,6 +376,12 @@ private void checkGameOver() {
     if (playerPieces == 0 || botPieces == 0) {
         String winner = playerPieces == 0 ? "Bot" : "Player";
 
+        if (winner.equals("Player") && user != 0) {
+            GameDB.setWins(user,GameDB.getWins(user) + 1);
+        } else if (winner.equals("Bot") && user == 0) {
+            GameDB.setLosses(user,GameDB.getLosses(user) + 1);
+        }
+
         // Show game over popup
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Game Over");
