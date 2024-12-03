@@ -32,7 +32,7 @@ public class CheckersBoardGUI extends Application {
     private boolean playerIsBot; // Determines if the player is controlling bot pieces or not
     private boolean chainJumpInProgress = false; // Track if a chain jump is required
     private Piece chainJumpPiece = null; // The piece involved in the chain jump
-    private int userID = 0;
+    private int user = 0;
 
     private Game game; // Game instance to manage game logic.
 
@@ -40,12 +40,12 @@ public class CheckersBoardGUI extends Application {
     public void start(Stage primaryStage) {
         // Initialize the game
 
-        userID = FirstEx.getUserID();
+        user = userID.getUserID();
 
-        if (userID == 0 || GameDB.loadBoard(userID) == null) {
+        if (user == 0 || GameDB.loadBoard(user) == null) {
             game = new Game(); // This creates a new board and sets initial positions for pieces.
         } else {
-            game = new Game(0, 0, GameDB.loadBoard(userID));
+            game = new Game(0, 0, GameDB.loadBoard(user));
         }
 
         boardGrid = new GridPane();
@@ -85,6 +85,11 @@ public class CheckersBoardGUI extends Application {
         });
 
         topPanel.getChildren().addAll(settingsButton, difficultyComboBox, resetButton);
+        if (user == 0) {
+            topPanel.getChildren().addAll(quitButton);
+        } else {
+            topPanel.getChildren().addAll(saveQuitButton);
+        }
         root.setTop(topPanel);
 
 
@@ -393,7 +398,7 @@ private void checkGameOver() {
 
     private void saveQuit() {
         String save = game.getBoard().export();
-        GameDB.saveBoard(userID, save);
+        GameDB.saveBoard(user, save);
         System.exit(0);
     }
 

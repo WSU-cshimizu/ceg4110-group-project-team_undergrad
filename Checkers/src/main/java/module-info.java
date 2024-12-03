@@ -6,4 +6,6 @@ module org.undergrad.checkers {
 
     opens org.undergrad.checkers.gui to javafx.fxml;
     exports org.undergrad.checkers.gui;
+    exports org.undergrad.checkers.game;
+    opens org.undergrad.checkers.game to javafx.fxml;
 }

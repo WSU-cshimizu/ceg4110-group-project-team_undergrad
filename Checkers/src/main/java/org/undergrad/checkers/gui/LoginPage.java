@@ -1,6 +1,6 @@
 package org.undergrad.checkers.gui;
 
-import org.undergrad.checkers.gui.*;
+import org.undergrad.checkers.game.userID;
 import javafx.event.ActionEvent;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -62,15 +62,18 @@ public class LoginPage extends Application {
             System.out.println(userName + " " + password);
 
             //Check if valid login
-            int userID = GameDB.findUser(userName, password);
+            int ID = GameDB.findUser(userName, password);
+            System.out.println(ID);
 
-            if (userID == 0) {
+            if (ID == 0) {
                 System.out.println("User not found... Creating new user");
                 GameDB.createUser(userName, password);
-                userID = GameDB.findUser(userName, password);
-                FirstEx.setUserID(userID);
-            } else if (userID == -1) {
+                ID = GameDB.findUser(userName, password);
+                userID.setUserID(ID);
+            } else if (ID == -1) {
                 System.out.println("Username already exists or incorrect password");
+            } else {
+                userID.setUserID(ID);
             }
 
             // Further change this once login is fully completed

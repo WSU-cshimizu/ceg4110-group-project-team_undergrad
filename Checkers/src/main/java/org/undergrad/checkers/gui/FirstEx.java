@@ -21,10 +21,9 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.stage.Stage;
+import org.undergrad.checkers.game.userID;
 
 public class FirstEx extends Application {
-
-    private static int userID = 0;
 
     @Override
     public void start(Stage stage) {
@@ -61,6 +60,7 @@ public class FirstEx extends Application {
         Button btnSeeStats = new Button("See Stats");
         Button btnExit = new Button("Exit");
         Button btnLogout = new Button("Logout");
+        Button btnLogin = new Button("Login");
         Button test1 = new Button("Test");
         Button test2 = new Button("test2");
         Button test3 = new Button("test3");
@@ -128,6 +128,12 @@ public class FirstEx extends Application {
 
  
         btnLogout.setOnAction((ActionEvent event) -> {
+            userID.setUserID(0);
+            LoginPage test = new LoginPage();
+            test.start(stage);
+        });
+
+        btnLogin.setOnAction((ActionEvent event) -> {
             LoginPage test = new LoginPage();
             test.start(stage);
         });
@@ -147,7 +153,11 @@ public class FirstEx extends Application {
         gridPane.add(btnSettings, 3, 5);
         gridPane.add(btnSeeStats, 3, 6);
         gridPane.add(btnExit, 3, 7);
-        gridPane.add(btnLogout, 5, 13);
+        if (userID.getUserID() == 0) {
+            gridPane.add(btnLogin, 5, 13);
+        } else {
+            gridPane.add(btnLogout, 5, 13);
+        }
 
 
     // Set background color or image (choose one)
@@ -240,15 +250,8 @@ public class FirstEx extends Application {
         stage.show();
     }
 
-    public static void setUserID(int newuserID) {
-        userID = newuserID;
-    }
-
-    public static int getUserID() {
-        return userID;
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
 }
+
