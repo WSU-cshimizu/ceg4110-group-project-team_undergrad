@@ -21,3 +21,5 @@
 
 ## Further Comments
 * Given further time there are aspects we would have liked to improve upon further for our project. These include further testing and debugging, as well as better feature implementation and visual deisgn.
+
+* We were not able to implement anything particularly for the Settings button after making it a required feature. Tried to implement sounds but there had been issues with that functionality to add onto the game.
